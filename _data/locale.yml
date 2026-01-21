@@ -1,0 +1,29 @@
+# Website text
+
+# English
+# -----------------
+en: &DEFAULT_EN
+  date_format: "%-dth %B %Y"
+  title: "About me"
+  description: "Posts about my life."
+en-US:
+  <<: *DEFAULT_EN
+en-CA:
+  <<: *DEFAULT_EN
+en-GB:
+  <<: *DEFAULT_EN
+en-AU:
+  <<: *DEFAULT_EN
+
+# German (default)
+# -----------------
+de: &DEFAULT_DE
+  date_format: "%-d. %B %Y"
+  title: "Über mich"
+  description: "Posts aus meinem Leben."
+de-DE:
+  <<: *DEFAULT_DE
+de-AU:
+  <<: *DEFAULT_DE
+de-CH:
+  <<: *DEFAULT_DE

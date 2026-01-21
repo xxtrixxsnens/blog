@@ -1,0 +1,40 @@
+{%- assign current_lang = page.lang | default: site.locale -%}
+{%- assign posts_by_lang = site.posts | where: "lang", current_lang -%}
+{%- assign prev_post = nil -%}
+{%- assign next_post = nil -%}
+{%- assign next_candidate = nil -%}
+{%- assign found_current = false -%}
+
+{%- for post in posts_by_lang -%}
+  {%- if found_current -%}
+    {%- assign prev_post = post -%}
+    {%- break -%}
+  {%- endif -%}
+
+  {%- if post.url == page.url -%}
+    {%- assign found_current = true -%}
+    {%- assign next_post = next_candidate -%}
+  {%- else -%}
+    {%- assign next_candidate = post -%}
+  {%- endif -%}
+{%- endfor -%}
+
+<nav class="page-pagination" role="navigation">
+  {% if prev_post %}
+    <a class="page-previous" href="{{ prev_post.url | relative_url }}">
+      <h4 class="page-pagination-label">{{ site.data.text[current_lang].previous | default: 'Previous' }}</h4>
+      <span class="page-pagination-title">
+        <i class="fas fa-arrow-left"></i> {{ prev_post.title | markdownify | strip_html }}
+      </span>
+    </a>
+  {% endif %}
+
+  {% if next_post %}
+    <a class="page-next" href="{{ next_post.url | relative_url }}">
+      <h4 class="page-pagination-label">{{ site.data.text[current_lang].next | default: 'Next' }}</h4>
+      <span class="page-pagination-title">
+        {{ next_post.title | markdownify | strip_html }} <i class="fas fa-arrow-right"></i>
+      </span>
+    </a>
+  {% endif %}
+</nav>

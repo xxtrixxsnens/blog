@@ -1,0 +1,29 @@
+<header class="masthead">
+  <div class="wrap">
+    {%- assign current_lang = page.lang | default: site.locale -%}
+    {%- assign home_url = '/' -%}
+    {%- if current_lang != site.locale -%}
+      {%- assign home_url = '/' | append: current_lang | append: '/' -%}
+    {%- endif -%}
+    {%- assign home_url = home_url | relative_url -%}
+
+    {%- assign site_title = site.data.locale[current_lang].title | default: site.title -%}
+    {%- assign site_description = site.data.locale[current_lang].description | default: site.description -%}
+
+    {% if site.logo %}
+      <a href="{{ home_url }}" class="site-logo" rel="home" title="{{ site_title }}">
+        <img src="{{ site.logo | relative_url }}" class="site-logo-img animated fadeInDown" alt="{{ site_title }}">
+      </a>
+    {% endif %}
+
+    {% assign page_image = page.image.path | default: page.image %}
+    {% unless page_image %}
+      {% if page.url == '/' %}
+        <h1 class="site-title animated fadeIn"><a href="{{ home_url }}">{{ site_title }}</a></h1>
+      {% else %}
+        <div class="site-title animated fadeIn"><a href="{{ home_url }}">{{ site_title }}</a></div>
+      {% endif %}
+      <p class="site-description animated fadeIn" itemprop="description">{{ site_description }}</p>
+    {% endunless %}
+  </div>
+</header>

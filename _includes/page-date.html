@@ -1,0 +1,4 @@
+<time class="page-date dt-published" datetime="{{ page.date | date_to_xmlschema }}">
+  {%- assign date_format = site.data.locale[site.locale].date_format | default: "%B %-d, %Y" -%}
+  <a class="u-url" href="{{ entry.url | relative_url }}">{{ page.date | localize_date: date_format, site.locale }}</a>
+</time>
