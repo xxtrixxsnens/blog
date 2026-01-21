@@ -1,0 +1,7 @@
+{%- assign current_lang = page.lang | default: site.locale -%}
+{%- unless page.layout == 'collection' -%}
+  <time class="entry-date dt-published" datetime="{{ entry.date | date_to_xmlschema }}">
+    {%- assign date_format = site.data.locale[current_lang].date_format | default: "%B %-d, %Y" -%}
+    {{ entry.date | localize_date: date_format, current_lang }}
+  </time>
+{%- endunless -%}

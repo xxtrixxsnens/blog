@@ -1,0 +1,27 @@
+<div class=lang-selector site-nav animated drop">
+  <details>
+    <summary>
+      {{ page.lang | default: site.lang | default: "en" | slice: 0, 2 | upcase }}
+    </summary>
+    <ul class="lang-dropdown">
+      {% assign matching_posts = site.posts | where: "ref", page.ref %}
+      {% assign matching_pages = site.pages | where: "ref", page.ref %}
+      {% assign all_items = matching_posts | concat: matching_pages | compact | sort: 'lang' %}
+      {% assign seen_langs = "" %}
+
+      {% for item in all_items %}
+        {% if item.lang and item.url %}
+          {% assign short_lang = item.lang | slice: 0, 2 | downcase %}
+          {% unless seen_langs contains short_lang %}
+            <li>
+                <a href="{{ item.url | relative_url }}" class="{% if short_lang == page.lang %}active{% endif %}">
+                  {{ short_lang | upcase }}
+                </a>
+            </li>
+            {% assign seen_langs = seen_langs | append: " " | append: short_lang %}
+          {% endunless %}
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </details>
+</div>

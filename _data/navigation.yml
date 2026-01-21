@@ -1,0 +1,52 @@
+# Sample site navigation bar links
+
+- url: /
+  en: &DEFAULT_EN
+    title: "Home"
+  en-US:
+    <<: *DEFAULT_EN
+  en-CA:
+    <<: *DEFAULT_EN
+  en-GB:
+    <<: *DEFAULT_EN
+  en-AU:
+    <<: *DEFAULT_EN
+  de: &DEFAULT_DE
+    title: "Home"
+  de-DE:
+    <<: *DEFAULT_DE
+  de-AU:
+    <<: *DEFAULT_DE
+  de-CH:
+    <<: *DEFAULT_DE
+# - url: /categories
+#   title:
+#   en: &DEFAULT_EN
+#     title: "Categories"
+#   en-US:
+#     <<: *DEFAULT_EN
+#   en-CA:
+#     <<: *DEFAULT_EN
+#   en-GB:
+#     <<: *DEFAULT_EN
+#   en-AU:
+#     <<: *DEFAULT_EN
+#   de: &DEFAULT_DE
+#     title: "Kategorien"
+#   de-DE:
+#     <<: *DEFAULT_DE
+#   de-AU:
+#     <<: *DEFAULT_DE
+#   de-CH:
+#     <<: *DEFAULT_DE
+# ----
+# - title: Posts
+#   url: /posts/
+# - title: Tags
+#   url: /tags/
+# - title: Recipes
+#   url: /recipes/
+# - title: Search
+#   url: /search/
+# - title: External Page
+#   url: https://the-page.com/you-want-to-link-to.html
